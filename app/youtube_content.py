@@ -102,34 +102,10 @@ async def recent_uploads(limit: int = 30) -> list[dict]:
 
 
 async def recent_shorts(limit: int = 5) -> list[dict]:
-    # Inspect recent uploads and verify each candidate against Analytics'
-    # creatorContentType filter; duration is deliberately not used as proof.
-    uploads = await recent_uploads(20)
-    selected = []
+    """Return the best-performing Shorts in the latest 28 complete days."""
     end = date.today() - timedelta(days=2)
-    for item in uploads:
-        video_id = item.get("id")
-        if not video_id:
-            continue
-        published = (item.get("snippet") or {}).get("publishedAt", "")[:10]
-        start = date.fromisoformat(published) if published else end - timedelta(days=89)
-        if start > end:
-            continue
-        rows = await _analytics_video_rows_for_id(start, end, video_id, "SHORTS")
-        if rows:
-            row = rows[0]
-            snippet = item.get("snippet", {})
-            selected.append({
-                "id": video_id,
-                "title": snippet.get("title", video_id),
-                "published_at": snippet.get("publishedAt", ""),
-                "url": f"https://www.youtube.com/shorts/{video_id}",
-                "views": row.get("views", 0),
-                "averageViewPercentage": row.get("averageViewPercentage"),
-            })
-            if len(selected) >= limit:
-                break
-    return selected
+    start = end - timedelta(days=27)
+    return await top_videos(start, end, content_type="SHORTS", limit=limit)
 
 
 async def _analytics_video_rows_for_id(start: date, end: date, video_id: str,
