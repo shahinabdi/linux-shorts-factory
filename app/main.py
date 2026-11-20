@@ -24,7 +24,7 @@ from .telegram import (
 from .config import settings
 from .research import run_daily_research
 from .youtube_routes import router as youtube_router
-from .reports import send_daily_report, send_weekly_report
+from .reports import (send_daily_report, send_weekly_report, send_top_report, send_recent_shorts_report)
 from .youtube import channel_info
 
 logging.basicConfig(level=logging.INFO)
@@ -77,8 +77,12 @@ async def manual_report_background(report_type: str):
             logger.info("Starting manual %s YouTube report from Telegram", report_type)
             if report_type == "daily":
                 await send_daily_report()
-            else:
+            elif report_type == "weekly":
                 await send_weekly_report()
+            elif report_type == "top":
+                await send_top_report()
+            elif report_type == "shorts":
+                await send_recent_shorts_report()
         except Exception:
             logger.exception("Manual %s YouTube report failed", report_type)
             await _send_message("⚠️ ساخت گزارش ناموفق بود. اتصال YouTube و لاگ‌های سرویس را بررسی کن.")
@@ -331,9 +335,10 @@ async def telegram_webhook(update_payload: dict, x_telegram_bot_api_secret_token
         elif command == "/selected":
             selected = [t for t in all_topics() if t.status == TopicStatus.SELECTED]
             await send_selected_topics(selected)
-        elif command in ("/daily", "/weekly"):
-            report_type = "daily" if command == "/daily" else "weekly"
-            await _send_message(f"⏳ گزارش {'روزانه' if report_type == 'daily' else 'هفتگی'} در حال آماده‌سازی است...")
+        elif command in ("/daily", "/weekly", "/top", "/shorts"):
+            report_type = command.lstrip("/")
+            labels = {"daily": "روزانه", "weekly": "هفتگی", "top": "۵ ویدیوی برتر", "shorts": "۵ شورت اخیر"}
+            await _send_message(f"⏳ گزارش {labels[report_type]} در حال آماده‌سازی است...")
             asyncio.create_task(manual_report_background(report_type))
         elif command == "/status":
             await send_telegram_status()
