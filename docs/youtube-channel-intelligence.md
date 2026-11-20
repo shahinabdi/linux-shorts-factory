@@ -19,7 +19,8 @@ This feature branch adds read-only OAuth access to the channel owned by the auth
 6. Grant the EC2 instance role `secretsmanager:GetSecretValue` and `secretsmanager:PutSecretValue` on that secret ARN. Do not broaden the role to all secrets.
 7. Rebuild/restart the API, then visit:
    `https://factory.shahinabdi.com/youtube/oauth/start`
-8. Authorize the Google account that owns @shahinabdi. Verify:
+8. The OAuth start route is protected with HTTP Basic authentication. Use username `admin` and the existing `FACTORY_ADMIN_KEY` as the password when opening the URL. Ensure that key is configured in the server's `.env` before exposing the route.
+9. Authorize the Google account that owns @shahinabdi. Verify:
    `https://factory.shahinabdi.com/youtube/status`
 
 OAuth requests ask for `youtube.readonly` and `yt-analytics.readonly`. Refresh tokens are stored in Secrets Manager, not in Git. The OAuth state is held in process memory, so use one API worker for the callback flow.
