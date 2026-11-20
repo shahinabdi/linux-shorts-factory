@@ -1,0 +1,873 @@
+{
+  "stories": {
+    "9692a4353452": {
+      "subject": "Linux Distros",
+      "proposed_title": "کدام توزیع لینوکس برای شروع بهتر است؟",
+      "script_fa": "اگه تازه می‌خوای لینوکس رو شروع کنی، لازم نیست حتماً بری سراغ آرچ! برای استفاده روزمره، اوبونتو و لینوکس مینت انتخاب‌های ساده‌ای هستن. اگه دوست داری سیستم‌عاملت همیشه به‌روز باشه و با تکنولوژی‌های جدید کار کنی، فدورا گزینه جذابیه. اما اگه می‌خوای کنترل بیشتری روی سیستم داشته باشی و از یادگیری لذت می‌بری، آرچ می‌تونه انتخاب خوبی باشه. پس بهترین توزیع لینوکس وجود نداره؛ بهترین انتخاب، توزیعیه که با نیاز و تجربه تو سازگار باشه.",
+      "estimated_seconds": 40,
+      "sources": [],
+      "editorial_notes": "Evergreen educational content. Beginner-friendly comparison. Verify current installation and support recommendations before publication.",
+      "id": "9692a4353452",
+      "status": "APPROVED",
+      "approval_token": "0fJlXOZa95ixBI-IHPEpHg",
+      "revision_notes": null,
+      "render_key": null
+    }
+  },
+  "topics": {
+    "00256e3693c1": {
+      "id": "00256e3693c1",
+      "category": "Linux Distros",
+      "title": "دبیان، فدورا و آرچ چه تفاوتی دارند؟",
+      "hook_fa": "تفاوت این سه فقط در ظاهر دسکتاپ نیست؛ فلسفه‌شان فرق دارد.",
+      "description": "مقایسه فلسفه انتشار، بسته‌ها و مخاطب هر خانواده.",
+      "score": 99,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "6630534194f947f6b02d6834367c398c"
+    },
+    "9e085dfb72a6": {
+      "id": "9e085dfb72a6",
+      "category": "How Linux Works",
+      "title": "وقتی لینوکس بوت می‌شود چه اتفاقی می‌افتد؟",
+      "hook_fa": "از روشن شدن کامپیوتر تا صفحه ورود، چه مراحلی طی می‌شود؟",
+      "description": "Firmware، bootloader، kernel، init و سرویس‌ها.",
+      "score": 99,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "bbf57e5ea598439081abb81f6e13e727"
+    },
+    "d4432c1a99ef": {
+      "id": "d4432c1a99ef",
+      "category": "Linux Distros",
+      "title": "کدام توزیع لینوکس برای شروع بهتر است؟",
+      "hook_fa": "قرار نیست همه با آرچ شروع کنند؛ انتخاب درست به نیازت بستگی دارد.",
+      "description": "راهنمای انتخاب توزیع بر اساس تجربه و کاربرد.",
+      "score": 98,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "SELECTED",
+      "approval_token": "08fee1bd39904907a95f00c9b14735dd"
+    },
+    "144960f51adf": {
+      "id": "144960f51adf",
+      "category": "How Linux Works",
+      "title": "کرنل لینوکس دقیقاً چه کاری انجام می‌دهد؟",
+      "hook_fa": "کرنل خود سیستم‌عامل نیست؛ اما قلب سیستم‌عامل است.",
+      "description": "مدیریت پردازنده، حافظه، دستگاه‌ها و system calls.",
+      "score": 98,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "f75ceecd80c14d1cbce619c3078411ea"
+    },
+    "88ec69995c3f": {
+      "id": "88ec69995c3f",
+      "category": "Linux Distros",
+      "title": "فرق Debian و Ubuntu دقیقاً چیست؟",
+      "hook_fa": "اوبونتو از دبیان آمده، اما این دو یک تجربه یکسان نیستند.",
+      "description": "رابطه دو توزیع، چرخه انتشار و تفاوت‌های مهم.",
+      "score": 97,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "dcdf9d58d99541ccb7c617246c40c68d"
+    },
+    "37a55ecb0c8f": {
+      "id": "37a55ecb0c8f",
+      "category": "How Linux Works",
+      "title": "systemd چیست و چرا استفاده می‌شود؟",
+      "hook_fa": "بعد از کرنل، چه چیزی سرویس‌های لینوکس را راه می‌اندازد؟",
+      "description": "نقش init و مدیریت سرویس‌ها در systemd.",
+      "score": 97,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "179952c7a71a44fd8bb4921555a5f708"
+    },
+    "0b5cf7ebe851": {
+      "id": "0b5cf7ebe851",
+      "category": "Linux Distros",
+      "title": "Rolling Release یعنی چه؟",
+      "hook_fa": "در لینوکس دو روش مهم برای دریافت آپدیت وجود دارد.",
+      "description": "مقایسه rolling release و fixed release با مثال.",
+      "score": 96,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "e9a7efb7815d4c6d84356a0f1c1bd0a1"
+    },
+    "9b76d6aba519": {
+      "id": "9b76d6aba519",
+      "category": "How Linux Works",
+      "title": "فایل‌های لینوکس کجا ذخیره می‌شوند؟",
+      "hook_fa": "چرا در لینوکس همه‌چیز از ریشه یا / شروع می‌شود؟",
+      "description": "آشنایی سریع با /etc، /home، /var، /usr و /proc.",
+      "score": 96,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "1a77b95b1e274554b2bb56fd420b14e6"
+    },
+    "3988edc406b1": {
+      "id": "3988edc406b1",
+      "category": "Practical Linux",
+      "title": "چطور بفهمیم کدام برنامه یک پورت را اشغال کرده؟",
+      "hook_fa": "با دستور ss و lsof پورت‌های در حال استفاده را پیدا کن.",
+      "description": "پیدا کردن پردازشی که روی یک پورت مثل ۸۰۸۰ گوش می‌دهد.",
+      "score": 96,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "SELECTED",
+      "approval_token": "98992243117546e78e9cbd9cf893e1ea"
+    },
+    "d26623b7ec5a": {
+      "id": "d26623b7ec5a",
+      "category": "Practical Linux",
+      "title": "چطور بزرگ‌ترین فایل‌های لینوکس را پیدا کنیم؟",
+      "hook_fa": "اگر فضای دیسکت پر شده، این دستورها کمک می‌کنند مقصر را پیدا کنی.",
+      "description": "استفاده از du و find برای پیدا کردن فایل‌ها و پوشه‌های حجیم.",
+      "score": 96,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "0be0262d80f54b97be40bb4d33818ba9"
+    },
+    "a53c448a40e5": {
+      "id": "a53c448a40e5",
+      "category": "Desktop Linux",
+      "title": "KDE Plasma یا GNOME؛ کدام را انتخاب کنیم؟",
+      "hook_fa": "دو دسکتاپ محبوب لینوکس، دو فلسفه متفاوت دارند.",
+      "description": "مقایسه تجربه کاربری، شخصی‌سازی و workflow.",
+      "score": 96,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "05dfd2cc05fd4d53b8511c3b0a09ca0f"
+    },
+    "24e3102c443c": {
+      "id": "24e3102c443c",
+      "category": "How Linux Works",
+      "title": "فرق systemd، OpenRC و runit چیست؟",
+      "hook_fa": "همه سیستم‌های init یک کار می‌کنند، اما به یک روش نه.",
+      "description": "مقایسه ساده فلسفه و کاربرد init systemها.",
+      "score": 95,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "SELECTED",
+      "approval_token": "fca57430c9974f28b1f557ed6bdca64d"
+    },
+    "e178b08fd022": {
+      "id": "e178b08fd022",
+      "category": "Practical Linux",
+      "title": "فرق chmod و chown چیست؟",
+      "hook_fa": "یکی مجوز را تغییر می‌دهد، دیگری مالک فایل را.",
+      "description": "توضیح permission و ownership با مثال کوتاه.",
+      "score": 95,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "99f6649a1ed741428a0a19317f9299f2"
+    },
+    "e4af82105dd6": {
+      "id": "e4af82105dd6",
+      "category": "Desktop Linux",
+      "title": "Window Manager با Desktop Environment چه فرقی دارد؟",
+      "hook_fa": "چرا بعضی‌ها به‌جای KDE سراغ Sway یا Hyprland می‌روند؟",
+      "description": "تفاوت مدیر پنجره و محیط دسکتاپ با مثال.",
+      "score": 95,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "a15b289a79c4457f95bd69b7ccd46ab4"
+    },
+    "e0d1d7e0ee2e": {
+      "id": "e0d1d7e0ee2e",
+      "category": "Linux Distros",
+      "title": "چرا بعضی‌ها Arch Linux را انتخاب می‌کنند؟",
+      "hook_fa": "آرچ برای همه نیست؛ پس چرا این‌قدر طرفدار دارد؟",
+      "description": "مدل rolling release، کنترل سیستم و Arch Wiki.",
+      "score": 94,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "95337f35abdb483290bf02866325d918"
+    },
+    "729eb2b8dd86": {
+      "id": "729eb2b8dd86",
+      "category": "How Linux Works",
+      "title": "فرق Wayland و X11 چیست؟",
+      "hook_fa": "این دو فقط اسم دو نوع نمایشگر نیستند؛ معماری متفاوتی دارند.",
+      "description": "مقایسه مدل نمایش و نقش compositor و display server.",
+      "score": 94,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "SELECTED",
+      "approval_token": "a331ed25d52c44e9bfe626857a627f9c"
+    },
+    "f16adc4f927f": {
+      "id": "f16adc4f927f",
+      "category": "Practical Linux",
+      "title": "فرق df و du چیست؟",
+      "hook_fa": "یکی فضای فایل‌سیستم را نشان می‌دهد، دیگری مصرف پوشه‌ها را.",
+      "description": "تفاوت df -h و du -sh با مثال واقعی.",
+      "score": 94,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "d80d7dee3f124de4859f25e6ba790a61"
+    },
+    "e303e9d03dab": {
+      "id": "e303e9d03dab",
+      "category": "Developer Tools",
+      "title": "فرق APT و DNF و Pacman چیست؟",
+      "hook_fa": "مدیر بسته‌ها در توزیع‌های مختلف چه تفاوتی دارد؟",
+      "description": "مقایسه ابزارهای نصب و به‌روزرسانی بسته‌ها.",
+      "score": 94,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "b9809c1bd7014a63a831d5a1f3b0d489"
+    },
+    "4d0776e89686": {
+      "id": "4d0776e89686",
+      "category": "How Linux Works",
+      "title": "sudo دقیقاً چه کار می‌کند؟",
+      "hook_fa": "sudo با ورود به حساب root فرق دارد.",
+      "description": "مدل دسترسی مدیریتی و اجرای یک دستور با امتیاز بالاتر.",
+      "score": 93,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "SELECTED",
+      "approval_token": "5f41fdfa715c412bb90c73da03e3e361"
+    },
+    "141c3d76cb5c": {
+      "id": "141c3d76cb5c",
+      "category": "Practical Linux",
+      "title": "چطور یک سرویس خراب را با systemctl بررسی کنیم؟",
+      "hook_fa": "قبل از ری‌استارت کردن سرویس، این سه دستور را اجرا کن.",
+      "description": "systemctl status، journalctl و restart برای عیب‌یابی سرویس.",
+      "score": 93,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "d1fdbfc58d0f491da2953d04069ec0a5"
+    },
+    "bad67601e3f0": {
+      "id": "bad67601e3f0",
+      "category": "Developer Tools",
+      "title": "Docker روی لینوکس چطور کار می‌کند؟",
+      "hook_fa": "کانتینر ماشین مجازی نیست؛ پس واقعاً چیست؟",
+      "description": "مفهوم namespace و cgroups در حد مقدماتی.",
+      "score": 93,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "5ab99439cf504b6e8b8d30d6e7ffe630"
+    },
+    "be561d6f1bd7": {
+      "id": "be561d6f1bd7",
+      "category": "Linux Distros",
+      "title": "Fedora Workstation برای چه کسانی مناسب است؟",
+      "hook_fa": "اگر نرم‌افزارهای نسبتاً جدید می‌خواهی، فدورا را بشناس.",
+      "description": "جایگاه فدورا، چرخه انتشار و تجربه دسکتاپ.",
+      "score": 92,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "SELECTED",
+      "approval_token": "7bca063f1bfc4e41858b3f26da34dfa5"
+    },
+    "d69679c5316b": {
+      "id": "d69679c5316b",
+      "category": "How Linux Works",
+      "title": "فایل‌سیستم ext4 و Btrfs چه تفاوتی دارند؟",
+      "hook_fa": "انتخاب فایل‌سیستم می‌تواند روی امکانات و workflow اثر بگذارد.",
+      "description": "مقایسه امکانات مهم ext4 و Btrfs بدون ورود به جزئیات سنگین.",
+      "score": 92,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "d1b11346753c424aa5fed58cbe26c593"
+    },
+    "93d2ee19ad20": {
+      "id": "93d2ee19ad20",
+      "category": "Practical Linux",
+      "title": "دستور find؛ فایل‌ها را حرفه‌ای پیدا کن",
+      "hook_fa": "اسم فایل، حجم، زمان تغییر و حتی نوع فایل را جست‌وجو کن.",
+      "description": "چند الگوی کاربردی find برای کاربران تازه‌کار.",
+      "score": 92,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "a37ff688c7384f189b0ee558baee7c03"
+    },
+    "ca43eb1d16f4": {
+      "id": "ca43eb1d16f4",
+      "category": "Linux Distros",
+      "title": "فرق Ubuntu LTS و نسخه معمولی چیست؟",
+      "hook_fa": "LTS فقط یک اسم نیست؛ روی مدت پشتیبانی و آپدیت‌ها اثر دارد.",
+      "description": "چرخه انتشار و پشتیبانی نسخه‌های اوبونتو.",
+      "score": 91,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "d8ead1d3415e4a5baa1e4b562effa295"
+    },
+    "e83ce49c4742": {
+      "id": "e83ce49c4742",
+      "category": "Linux Distros",
+      "title": "NixOS چه چیزی را متفاوت انجام می‌دهد؟",
+      "hook_fa": "در NixOS حتی تنظیمات سیستم هم قابل بازتولید است.",
+      "description": "معرفی پیکربندی declarative و مدیریت بسته Nix.",
+      "score": 91,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "e74c6a971c4a4608b42c6e750c0bb2eb"
+    },
+    "ea1fa77ac2a5": {
+      "id": "ea1fa77ac2a5",
+      "category": "Desktop Linux",
+      "title": "Hyprland چیست و برای چه کسی مناسب است؟",
+      "hook_fa": "یک دسکتاپ لینوکسی متفاوت با پنجره‌های پویا و workflow کیبوردی.",
+      "description": "معرفی Wayland compositor و نیازهای کاربر.",
+      "score": 91,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "a4991c37a94146dea441e8af1eda7296"
+    },
+    "2990f55df8da": {
+      "id": "2990f55df8da",
+      "category": "Linux Distros",
+      "title": "openSUSE Tumbleweed چیست؟",
+      "hook_fa": "یک توزیع rolling release با رویکرد تست و کیفیت متفاوت.",
+      "description": "معرفی Tumbleweed، openQA و مدل انتشار.",
+      "score": 89,
+      "source_type": "evergreen",
+      "sources": [],
+      "status": "NEW",
+      "approval_token": "1d1bd04b2cb742f68ddfdea252d0052b"
+    },
+    "ec6e27febbb5": {
+      "id": "ec6e27febbb5",
+      "category": "Linux Distros",
+      "title": "Fixes available in -proposed pocket for CVE-2026-98432",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Fixes for the CVE-2026-98432 Linux kernel vulnerability are available for Ubuntu.",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://ubuntu.com//blog/fixes-available-in-proposed-pocket-for-cve-2026-98432"
+      ],
+      "status": "NEW",
+      "approval_token": "0f38e17651ac41b99ea2531d3d066b02"
+    },
+    "5f6e2e1388fb": {
+      "id": "5f6e2e1388fb",
+      "category": "Linux Distros",
+      "title": "php2shell (CVE-2026-109618 and CVE-2026-109619) – PHP critical vulnerability fixes available",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Introduction Two critical security vulnerabilities affecting PHP have been identified that result in unauthenticated remote code execution (RCE) for any PHP application. The vulnerabilities have been assigned the CVE-2026-109618 and CVE-2026-109619 identifiers, but are also referred to using the php2shell nickname. Ubuntu has released fixes for the affected packages for all supported releases. The two [&hellip;]",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://ubuntu.com//blog/php2shell-vulnerability-fixes-available"
+      ],
+      "status": "NEW",
+      "approval_token": "9a9ea84a5346463eab56ca2b5b0d0fd4"
+    },
+    "e5de67ea076b": {
+      "id": "e5de67ea076b",
+      "category": "Linux Distros",
+      "title": "Canonical releases Ubuntu 26.10 Stonking Stingray",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "The latest interim release of Ubuntu previews privacy conscious speech-to-text, enables post-quantum package signing, completes the rollout of Rust coreutils, and improves enterprise identity integration. October 15, 2026 Today Canonical announced the release of Ubuntu 26.10, codenamed “Stonking Stingray,” available to download and install from ubuntu.com/download.&nbsp; Building on previous releases, Ubuntu 26.10 advances enterprise security [&hellip;]",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://ubuntu.com//blog/canonical-releases-ubuntu-26-10-stonking-stingray"
+      ],
+      "status": "NEW",
+      "approval_token": "122964e0a82d46d791750e9a4eca015c"
+    },
+    "34f3843413ee": {
+      "id": "34f3843413ee",
+      "category": "Linux Distros",
+      "title": "Migrating away from unmaintained NetworkManager VPN plugins (vpnc and fortisslvpn)",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Two legacy NetworkManager VPN plugins—NetworkManager-vpnc and NetworkManager-fortisslvpn—are retiring and will be obsolete, starting in Fedora Linux 45. This is part of ongoing system maintenance and security cleanup. If you use Virtual Private Networks (VPNs) to connect to remote workplace or enterprise networks, take note of this upcoming change in NetworkManager package availability. This article contains [&#8230;]",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://fedoramagazine.org/migrating-away-from-unmaintained-networkmanager-vpnpluginsvpnc-and-fortisslvpn/"
+      ],
+      "status": "NEW",
+      "approval_token": "8d5efb9bf521433495f8c194dcd0fdf5"
+    },
+    "114ee6804299": {
+      "id": "114ee6804299",
+      "category": "Desktop Linux",
+      "title": "GIMP 3.2.8 Released With Many Refinements, Numerous Security Fixes Due To AI Reports",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "GIMP 3.2.8 is out today as the newest stable release of this open-source image editing application that's most popular on the Linux desktop...",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://www.phoronix.com/news/GIMP-3.2.8-Released"
+      ],
+      "status": "NEW",
+      "approval_token": "bb6a0090fa004d2083b6aaffc74decb5"
+    },
+    "2026f1e7733b": {
+      "id": "2026f1e7733b",
+      "category": "Desktop Linux",
+      "title": "What’s New in Fedora Workstation 45",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Fedora Workstation features the latest six months of meticulous polish, under-the-hood responsiveness, and security hardening for F45, based on GNOME 51. Whether you are multitasking across monitors, managing daily appointments, or organizing large sets of files, GNOME 51 brings thoughtful refinements to your daily workflow on Fedora Workstation. Silky-Smooth Responsiveness: Reworked Frame Scheduling One standout improvement [&#8230;]",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://fedoramagazine.org/whats-new-fedora-workstation-45/"
+      ],
+      "status": "NEW",
+      "approval_token": "54cbdc2559c947acaea0be375c2e0011"
+    },
+    "28c2461751ce": {
+      "id": "28c2461751ce",
+      "category": "Developer Tools",
+      "title": "Security updates for Tuesday",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Security updates have been issued by AlmaLinux (bind, bind9.16, firefox, freerdp, ghostscript, kernel, kernel-rt, libXi, perl-YAML:1.24, perl:5.32, pipewire, qt5-qtbase, redis:6, tomcat, and wireshark), Debian (chromium, git-annex, incus, kernel, and strongswan), Fedora (barman, erlang-hex_core, glib-networking, kernel, knot, liblerc, libsoup3, mingw-cfitsio, openjpeg, perl-libnet, pipx, python-pillow, python-uv-build, radicale, ruff, rust-archive-trait, rust-astral-ini, rust-astral-mail-headers, rust-astral-pubgrub, rust-astral-version-ranges, rust-astral_async_zip, rust-quick-junit, rust-tar-codec, rust-tar-framing, tpm2-tss, ty, uv, and zvbi), Mageia (unbound), Red Hat (buildah, compat-openssl10, compat-openssl11, container-tools:rhel8, delve, golang-github-openprinting-ipp-usb, grafana, grafana-pcp, kernel, oci-seccomp-bpf-hook, openssl, opentelemetry-collector, osbuild-composer, podman, rhc, and skopeo), Slackware (expat), SUSE (ansible-core, apache-arrow, apache-commons-codec, apache-commons-io, apache-commons- logging, avalon-framework, avalon-logkit, glassfish-jsp, jsch, maven-file- management, opentest4j, aws-nitro-enclaves-cli, bouncycastle, chromedriver, chromium, cifs-u",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://lwn.net/Articles/1105111/"
+      ],
+      "status": "NEW",
+      "approval_token": "137aeac587df402da95727ae67bada36"
+    },
+    "99bc6e8a12af": {
+      "id": "99bc6e8a12af",
+      "category": "Developer Tools",
+      "title": "How to lower Android™ development costs by removing hardware from the critical path",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "As an Android developer, you’ll almost always have access to a device. However, when handling hardware, the device that you actually need often happens to be already in use, set up incorrectly, stored in another lab, or simply waiting to be reset. That’s when Android development costs start to increase. Because it’s not just the [&hellip;]",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://ubuntu.com//blog/lower-android-development-cost"
+      ],
+      "status": "NEW",
+      "approval_token": "5b98f5a9c34e4ddfb7efe15b6cb56c59"
+    },
+    "23ca8aa21e3a": {
+      "id": "23ca8aa21e3a",
+      "category": "Developer Tools",
+      "title": "Coding Agent Horror Stories: The CVE That Did Not Exist",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "An AI code review agent invented a CVE and recommended dangerous fixes. Learn how Docker Sandboxes contain agents and why their output needs verification.",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://www.docker.com/blog/coding-agent-horror-stories-the-cve-that-did-not-exist/"
+      ],
+      "status": "NEW",
+      "approval_token": "a4b76ae834ad4574a0805b1d6c17746d"
+    },
+    "471d5c0bfebf": {
+      "id": "471d5c0bfebf",
+      "category": "Developer Tools",
+      "title": "How bug bounty sharpens one researcher’s security skills",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "As Cybersecurity Awareness Month continues, the GitHub Bug Bounty team spotlights @r31n, diving into their research approach, favorite bug classes, and advice for aspiring hackers. The post How bug bounty sharpens one researcher’s security skills appeared first on The GitHub Blog .",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://github.blog/security/how-bug-bounty-sharpens-one-researchers-security-skills/"
+      ],
+      "status": "NEW",
+      "approval_token": "2318d5860cf748239944f541b8766470"
+    },
+    "b1ba82537aea": {
+      "id": "b1ba82537aea",
+      "category": "News & Releases",
+      "title": "NetBSD 11.1 Released With Security Fixes & Other Improvements",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Following the release of NetBSD 11.0 in August, NetBSD 11.1 is out today with a collection of security fixes and other improvements...",
+      "score": 85,
+      "source_type": "rss",
+      "sources": [
+        "https://www.phoronix.com/news/NetBSD-11.1-Released"
+      ],
+      "status": "NEW",
+      "approval_token": "d9c5a47b6227416ea3252422298707ad"
+    },
+    "6f3fe62dd8fe": {
+      "id": "6f3fe62dd8fe",
+      "category": "Linux Distros",
+      "title": "Fedora 45 Released With Many Leading-Edge Linux Innovations",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "After challenged by two release delays, Fedora 45 is officially out as the latest six-month update to this leading Linux distribution...",
+      "score": 82,
+      "source_type": "rss",
+      "sources": [
+        "https://www.phoronix.com/news/Fedora-45-Released"
+      ],
+      "status": "NEW",
+      "approval_token": "4e06cd10329c49789d785b4884e2e1e5"
+    },
+    "d8c181c1705c": {
+      "id": "d8c181c1705c",
+      "category": "Linux Distros",
+      "title": "[$] LLM reviews for Debian's new queue spark debate",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "The Debian project has wrestled with the topic of LLM usage for years, which culminated in a general-resolution vote this August. The project voted in favor of the fifth, out of eight, option: \" Responsible Use of Generative AI \". With the door open to LLM use, the DFSG, Licensing &amp; New Packages Team (usually shortened to \"DFSG team\"), which is relatively new , has started to employ LLMs in sending out reviews of packages entering Debian's new queue . The practice has raised a number of objections and questions about where lines should be drawn in the use of LLM-generated output.",
+      "score": 82,
+      "source_type": "rss",
+      "sources": [
+        "https://lwn.net/Articles/1103674/"
+      ],
+      "status": "NEW",
+      "approval_token": "1bc55797b0ca42df90ac17f5170acbc6"
+    },
+    "04d0798990b5": {
+      "id": "04d0798990b5",
+      "category": "Linux Distros",
+      "title": "eMudhra CA compromise fixes available",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "This blog post was updated with additional information related to libnss3 and Java applications on October 22, 2026. For more information on Ubuntu Core fixes, you can also check our Discourse post. Introduction The private keys of the eMudhra Certificate Authority (CA) have been demonstrated on 20 October 2026 to have been compromised. The Ubuntu [&hellip;]",
+      "score": 82,
+      "source_type": "rss",
+      "sources": [
+        "https://ubuntu.com//blog/emudhra-ca-compromise-fixes-available"
+      ],
+      "status": "NEW",
+      "approval_token": "00f31b2488ab4ca6b691d6eb438cad8a"
+    },
+    "4e08b2e1ec07": {
+      "id": "4e08b2e1ec07",
+      "category": "How Linux Works",
+      "title": "Linux 7.4 Features Steam Frame VR Headset, More AMD Zen 6 Enablement & Initial Apple M4 / A18 Pro Bring-Up",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "The Linux 7.4 kernel is hopefully going to be this year's Long Term Support (LTS) kernel version and is coming jam-packed with new features and changes.",
+      "score": 78,
+      "source_type": "rss",
+      "sources": [
+        "https://www.phoronix.com/review/linux-74-features"
+      ],
+      "status": "NEW",
+      "approval_token": "84103083c2d64ef3a50833d1010ad488"
+    },
+    "44b433e611b6": {
+      "id": "44b433e611b6",
+      "category": "Desktop Linux",
+      "title": "OpenSUSE Leap 16.1",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "The openSUSE project has announced the release of openSUSE Leap 16.1. The release is notable for allowing both traditional installations and immutable images with transactional updates. While immutable images had previously been available for Leap Micro, they are now available across all platforms that Leap supports, including servers, desktops, and virtual machines. \"Leap's image gives the best of both for traditional and immutable users, and we expect that Tumbleweed will follow when Agama becomes the default installer for Tumbleweed as well.\" said Leap release manager Lubos Kocman. \"The Leap Micro experience people relied on is still here, but now it shares the same release, the same life cycle and the same maintenance updates as the rest of Leap, so users only have to pick the mode that fits their workload.\"",
+      "score": 76,
+      "source_type": "rss",
+      "sources": [
+        "https://lwn.net/Articles/1105131/"
+      ],
+      "status": "NEW",
+      "approval_token": "03573aa52d944a988da0909695bef113"
+    },
+    "b5642d75d43a": {
+      "id": "b5642d75d43a",
+      "category": "Desktop Linux",
+      "title": "What’s New for Fedora Atomic Desktops in Fedora Linux 45",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Fedora 45 is now available! 🎉 So let’s see what this new release for the Fedora Atomic Desktops variants includes for Silverblue, Kinoite, Sway Atomic, Budgie Atomic and COSMIC Atomic. Changes for all Atomic Desktops Completed the migration to the new Fedora forge Everything related to the Atomic Desktops now resides in the atomic-desktops organization. [&#8230;]",
+      "score": 76,
+      "source_type": "rss",
+      "sources": [
+        "https://fedoramagazine.org/whats-new-for-fedora-atomic-desktops-in-fedora-linux-45/"
+      ],
+      "status": "NEW",
+      "approval_token": "c3512f0101e94f7ebdd7dbf281a6a828"
+    },
+    "732dfc11737b": {
+      "id": "732dfc11737b",
+      "category": "Desktop Linux",
+      "title": "What’s New in Fedora KDE Plasma Desktop 45",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "KDE Plasma 6.8 was released on KDE&#8217;s 30 year anniversary and we are proud to have it be the star of Fedora KDE Plasma Desktop Edition 45. The Fedora KDE Plasma Desktop Edition is well suited for many needs. It combines the reliable and trusted Fedora Linux base with the KDE Plasma Desktop environment. It [&#8230;]",
+      "score": 76,
+      "source_type": "rss",
+      "sources": [
+        "https://fedoramagazine.org/whats-new-in-fedora-kde-plasma-desktop-45/"
+      ],
+      "status": "NEW",
+      "approval_token": "4266cb0e0f974cf0af32a9d3b5512aa1"
+    },
+    "78820db4ba5e": {
+      "id": "78820db4ba5e",
+      "category": "Developer Tools",
+      "title": "Fedora Linux 45 released",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Fedora Linux 45 has been released. This includes all editions: Fedora Workstation , Fedora KDE Plasma Desktop , Fedora Server , Fedora Cloud , Fedora CoreOS , and Fedora IoT , as well as the Atomic Desktops and Spins . This release adds support for installation on Stratis storage using Anaconda or Kickstart installs, retires unmaintained VPN plugins for NetworkManager, and updates Fedora's desktop environments, developer toolchains, and system packages. See the Fedora wiki ChangeSet page for a list of major changes.",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://lwn.net/Articles/1105121/"
+      ],
+      "status": "NEW",
+      "approval_token": "ecd47cdb8f974e38b7f243836e12767b"
+    },
+    "1ef3bae38c40": {
+      "id": "1ef3bae38c40",
+      "category": "Developer Tools",
+      "title": "The Impact of Digital Sovereignty on Open Source Companies",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "By Philipp Reisner, CEO LINBIT® Sovereignty is a word borrowed from statecraft. A sovereign country is independent in its decisions. The term &#8220;digital sovereignty&#8221; is a more recent invention that applies to organizations and even individuals. In this article, I discuss what the push for digital sovereignty implies for Linux-focused, open source developers and companies. [&#8230;] The post The Impact of Digital Sovereignty on Open Source Companies appeared first on Linux.com .",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://www.linux.com/contributed/the-impact-of-digital-sovereignty-on-open-source-companies/"
+      ],
+      "status": "NEW",
+      "approval_token": "e37a23c90960465189ff1869e14c8fe2"
+    },
+    "caefab2b8187": {
+      "id": "caefab2b8187",
+      "category": "Developer Tools",
+      "title": "Docker Commits to Bringing the Sandbox Kit Spec to the CNCF",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Docker and the CNCF will partner on an open spec to make agent permissions portable&#160; Docker Sandbox Kits let you package an AI agent together with exactly what it is allowed to do, so anyone can pull the same agent with the same limits, review changes to those limits, and enforce them. Now, Docker has [&#8230;] The post Docker Commits to Bringing the Sandbox Kit Spec to the CNCF appeared first on Linux.com .",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://www.linux.com/featured/docker-commits-to-bringing-the-sandbox-kit-spec-to-the-cncf/"
+      ],
+      "status": "REJECTED",
+      "approval_token": "a044c4d200e9489d8a1cfc14b7c9def7"
+    },
+    "09f57b586a66": {
+      "id": "09f57b586a66",
+      "category": "Developer Tools",
+      "title": "Implementing Secure Zero-Touch Provisioning in AI and Edge Infrastructure",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "By Juha Holkkola, FusionLayer Group How DHCP Changed Connectivity In the late 1990s, the DHCP (Dynamic Host Configuration Protocol) quietly catalyzed a revolution in digital connectivity. Before DHCP was introduced, connecting devices to a network involved manual entry of IP addresses, DNS servers, subnet masks, and gateways. Networks were fragile, prone to errors, and severely [&#8230;] The post Implementing Secure Zero-Touch Provisioning in AI and Edge Infrastructure appeared first on Linux.com .",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://www.linux.com/contributed/implementing-secure-zero-touch-provisioning-in-ai-and-edge-infrastructure/"
+      ],
+      "status": "NEW",
+      "approval_token": "2d024243b5374a65bccf82cffe80258c"
+    },
+    "9e576131a158": {
+      "id": "9e576131a158",
+      "category": "Developer Tools",
+      "title": "How to Rebase to Fedora Linux 45 on Silverblue",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Fedora Silverblue is an operating system for your desktop built on Fedora Linux. It’s excellent for daily use, development, and container-based workflows. It offers numerous advantages such as being able to roll back in case of any problems. If you want to rebase to Fedora Linux 45 on your Fedora Silverblue system, this article tells you how. It not [&#8230;]",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://fedoramagazine.org/how-to-rebase-to-fedora-linux-45-on-silverblue/"
+      ],
+      "status": "NEW",
+      "approval_token": "ba19aa599f3345648da46bf8702e5f41"
+    },
+    "e1b1ece40523": {
+      "id": "e1b1ece40523",
+      "category": "Developer Tools",
+      "title": "The Ecosystem is the Answer: Docker, the Blueprint Alliance, and the Importance of Collaboration in the Agentic Era",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Docker is a founding member of the Blueprint Alliance, a 12-company reference architecture for securing AI agents, built around four governance questions.",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://www.docker.com/blog/docker-blueprint-alliance-agent-baseline/"
+      ],
+      "status": "NEW",
+      "approval_token": "d239c19611be414d8cd7c4dd41127261"
+    },
+    "668244f12411": {
+      "id": "668244f12411",
+      "category": "Developer Tools",
+      "title": "Where should your code live in a Docker Sandbox?",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Docker Sandboxes support three ways to organize an agent’s code: shared mounts, Git worktrees, and clone mode. Here’s how to choose between them.",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://www.docker.com/blog/docker-sandbox-code-checkout-workflows/"
+      ],
+      "status": "NEW",
+      "approval_token": "2e5db4d448f74f0185fc60e1309a2854"
+    },
+    "f443aef22e7a": {
+      "id": "f443aef22e7a",
+      "category": "Developer Tools",
+      "title": "Win the Agentic Era, Together: Introducing the Docker Navigator Partner Program",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Docker is launching the Navigator Partner Program, with three tiers, co-selling benefits, and a new incentive for every registered AI governance deal.",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://www.docker.com/blog/docker-navigator-partner-program/"
+      ],
+      "status": "NEW",
+      "approval_token": "23defb633aaa4c4994e808faf5f2efba"
+    },
+    "c3aac64af719": {
+      "id": "c3aac64af719",
+      "category": "Developer Tools",
+      "title": "PHP2Shell and eMudhra Patched",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "PHP2Shell and the eMudhra certificate compromise landed in the same week. Docker published a fixed PHP image within 24 hours and rebuilt the trust store across the catalog.",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://www.docker.com/blog/php2shell-and-emudhra-patched/"
+      ],
+      "status": "NEW",
+      "approval_token": "c8bced35673d4cd9bbd2b7a80d19aa61"
+    },
+    "fa91a0993441": {
+      "id": "fa91a0993441",
+      "category": "Developer Tools",
+      "title": "Arnis turns any place on Earth into a Minecraft world",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Louis Erbkamm built the first prototype in his free time. Now GitHub Copilot helps him maintain it alone. The post Arnis turns any place on Earth into a Minecraft world appeared first on The GitHub Blog .",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://github.blog/open-source/maintainers/arnis-turns-any-place-on-earth-into-a-minecraft-world/"
+      ],
+      "status": "NEW",
+      "approval_token": "46527ab95d974a099f9c5e7c0e095730"
+    },
+    "a1de7b11e4c5": {
+      "id": "a1de7b11e4c5",
+      "category": "Developer Tools",
+      "title": "Game Off 2026: The theme is SHIFT",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "GitHub’s annual month-long game jam is back for its 14th year! This November, make a game inspired by the theme SHIFT. Change gears, swap perspectives, bend reality, or just press a certain key. The post Game Off 2026: The theme is SHIFT appeared first on The GitHub Blog .",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://github.blog/open-source/gaming/game-off-2026-the-theme-is-shift/"
+      ],
+      "status": "NEW",
+      "approval_token": "1009744eec314c1b90e24261ca5f3b49"
+    },
+    "0999f20dc728": {
+      "id": "0999f20dc728",
+      "category": "Developer Tools",
+      "title": "GitHub Universe 2026: Evolving every layer of the stack",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Today, we laid out our vision for GitHub as the most comprehensive, end-to-end software delivery system in the world. The post GitHub Universe 2026: Evolving every layer of the stack appeared first on The GitHub Blog .",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/"
+      ],
+      "status": "NEW",
+      "approval_token": "9a9bcb7815874ffdab1f47b5f20891ed"
+    },
+    "286e3079f62a": {
+      "id": "286e3079f62a",
+      "category": "Developer Tools",
+      "title": "Octoverse: Commits, pushes, reach new highs in 2026 as developers build with agents",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "See how a record year of growth reached every industry, every field, and every kind of builder in the 2026 Octoverse report. The post Octoverse: Commits, pushes, reach new highs in 2026 as developers build with agents appeared first on The GitHub Blog .",
+      "score": 72,
+      "source_type": "rss",
+      "sources": [
+        "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/"
+      ],
+      "status": "NEW",
+      "approval_token": "70dd31aea2e34e1c92a75e59dd5e1439"
+    },
+    "b56b50e2693a": {
+      "id": "b56b50e2693a",
+      "category": "News & Releases",
+      "title": "RadeonSI & RADV Now Enabling D16 Support For GFX8 Era GPUs",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Thanks to the latest work by Georg Lehmann of Valve's Linux graphics team, the AMD GFX8 generation of GPUs that stretch from GCN Volcanic Islands through Polaris GPUs is still seeing improved Linux support. The latest work to land and benefiting both RadeonSI OpenGL and RADV Vulkan is enabling D16 support...",
+      "score": 66,
+      "source_type": "rss",
+      "sources": [
+        "https://www.phoronix.com/news/RadeonSI-RADV-GFX8-D16"
+      ],
+      "status": "NEW",
+      "approval_token": "6b8af5da5e984293bdca1d00aab646de"
+    },
+    "d3d30a3f6282": {
+      "id": "d3d30a3f6282",
+      "category": "News & Releases",
+      "title": "[$] The second part of the 7.4 merge window",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "The 7.4 merge window, which closed on November 1, included a record-breaking 18,591 non-merge changesets. That is almost as many as the entire 7.3 development cycle, which had 18,765, itself a record breaker. Of those, 11,838 landed after the article covering the first part of the merge window . Most of those were bug fixes of various forms; it seems as though bug fixes may be crowding out feature additions across the open-source ecosystem to some extent. Still, a good number of new features were included, and a handful removed, in the tail end of the merge window.",
+      "score": 66,
+      "source_type": "rss",
+      "sources": [
+        "https://lwn.net/Articles/1102739/"
+      ],
+      "status": "NEW",
+      "approval_token": "cc6db754dd1644e0a874dcc41fe7772e"
+    },
+    "5cd6529035de": {
+      "id": "5cd6529035de",
+      "category": "News & Releases",
+      "title": "Why Your Backups Are Too Big: A Practical Guide to Content-Defined Chunking",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "By Gilles Chehade You change one line in a large file. Your &#8220;incremental&#8221; backup re-uploads the whole thing anyway. Nine times out of ten, it&#8217;s not the network, and it&#8217;s not your storage backend. It&#8217;s the algorithm deciding where to cut your data into pieces. Every deduplication system works the same way: split data into [&#8230;] The post Why Your Backups Are Too Big: A Practical Guide to Content-Defined Chunking appeared first on Linux.com .",
+      "score": 66,
+      "source_type": "rss",
+      "sources": [
+        "https://www.linux.com/contributed/why-your-backups-are-too-big-a-practical-guide-to-content-defined-chunking/"
+      ],
+      "status": "NEW",
+      "approval_token": "a807f0e3a9b34c1ab99e128707577e7b"
+    },
+    "fa695ef044c3": {
+      "id": "fa695ef044c3",
+      "category": "News & Releases",
+      "title": "Building Autonomous ML Experimentation with Tangle and Tangent",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Tangent is an autonomous agent that automates the ML experimentation loop on top of Tangle, building pipelines, running them, and analyzing results with minimal hand-holding. The post Building Autonomous ML Experimentation with Tangle and Tangent appeared first on Linux.com .",
+      "score": 66,
+      "source_type": "rss",
+      "sources": [
+        "https://www.linux.com/news/shopifys-tangle-and-tangent/"
+      ],
+      "status": "NEW",
+      "approval_token": "b4c4af3d82c04254861c290d326fc93f"
+    },
+    "428a32c3b2c4": {
+      "id": "428a32c3b2c4",
+      "category": "Desktop Linux",
+      "title": "Domicile Desktop Brings Web Technologies To Building Wayland Desktops",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "Domicile is a new Wayland compositor that leverages Chromium for allowing custom Linux desktops to be built using HTML, CSS, and JavaScript/TypeScript...",
+      "score": 76,
+      "source_type": "rss",
+      "sources": [
+        "https://www.phoronix.com/news/Domicile-Desktop-Wayland"
+      ],
+      "status": "NEW",
+      "approval_token": "1313ef91097b49e9bef7eed6c97dbb85"
+    },
+    "4971570a3902": {
+      "id": "4971570a3902",
+      "category": "News & Releases",
+      "title": "Never lose robot data again: automatic ROS 2 bag recording and upload",
+      "hook_fa": "این خبر چه تغییری برای کاربران لینوکس ایجاد می‌کند؟",
+      "description": "If you work with robots, perhaps you’ve come up against a common, but annoying situation: the one field run that mattered is the one nobody recorded. Or it was recorded but the ROS 2 bag (a recording of ROS 2 topics) is sitting in the robot&#8217;s storage, at a customer site, three time zones away. [&hellip;]",
+      "score": 66,
+      "source_type": "rss",
+      "sources": [
+        "https://ubuntu.com//blog/never-lose-robot-data-again-automatic-ros-2-bag-recording-and-upload"
+      ],
+      "status": "REJECTED",
+      "approval_token": "6d2041f209fe4481be27b5207a00dfbe"
+    }
+  }
+}
