@@ -83,6 +83,12 @@ async def manual_report_background(report_type: str):
                 await send_top_report()
             elif report_type == "shorts":
                 await send_recent_shorts_report()
+            elif report_type == "compare":
+                await send_compare_report()
+            elif report_type == "growth":
+                await send_growth_report()
+            elif report_type == "engagement":
+                await send_engagement_report()
         except Exception:
             logger.exception("Manual %s YouTube report failed", report_type)
             await _send_message("⚠️ ساخت گزارش ناموفق بود. اتصال YouTube و لاگ‌های سرویس را بررسی کن.")
@@ -200,7 +206,10 @@ async def _handle_callback(callback: dict):
             "report_daily": "daily",
             "report_weekly": "weekly",
             "report_top": "top",
-            "report_shorts": "shorts",\n            "report_compare": "compare",\n            "report_growth": "growth",\n            "report_engagement": "engagement",
+            "report_shorts": "shorts",
+            "report_compare": "compare",
+            "report_growth": "growth",
+            "report_engagement": "engagement",
         }[data]
         await answer_callback_query(callback_id, "گزارش در حال آماده‌سازی است")
         asyncio.create_task(manual_report_background(report_type))
