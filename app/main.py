@@ -24,6 +24,7 @@ from .telegram import (
 from .config import settings
 from .research import run_daily_research
 from .youtube_routes import router as youtube_router
+from .reports import send_daily_report, send_weekly_report
 
 logging.basicConfig(level=logging.INFO)
 
@@ -67,6 +68,23 @@ async def manual_research_background():
 
 @app.on_event("startup")
 async def startup_event():
+    if settings.youtube_reports_enabled:
+        scheduler.add_job(
+            send_daily_report,
+            CronTrigger(hour=settings.youtube_daily_report_hour, minute=0,
+                        timezone=ZoneInfo(settings.schedule_timezone)),
+            id="youtube-daily-report", replace_existing=True, coalesce=True, max_instances=1,
+        )
+        scheduler.add_job(
+            send_weekly_report,
+            CronTrigger(day_of_week=settings.youtube_weekly_report_day, hour=9, minute=0,
+                        timezone=ZoneInfo(settings.schedule_timezone)),
+            id="youtube-weekly-report", replace_existing=True, coalesce=True, max_instances=1,
+        )
+        if not scheduler.running:
+            scheduler.start()
+        logger.info("YouTube reports scheduled in %s", settings.schedule_timezone)
+
     if settings.research_schedule_enabled:
         trigger = CronTrigger(
             hour=settings.research_schedule_hour,
