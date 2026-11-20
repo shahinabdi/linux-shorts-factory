@@ -24,7 +24,7 @@ from .telegram import (
 from .config import settings
 from .research import run_daily_research
 from .youtube_routes import router as youtube_router
-from .reports import (send_daily_report, send_weekly_report, send_top_report, send_recent_shorts_report)
+from .reports import (send_daily_report, send_weekly_report, send_top_report, send_recent_shorts_report, send_compare_report, send_growth_report, send_engagement_report)
 from .youtube import channel_info
 
 logging.basicConfig(level=logging.INFO)
@@ -83,6 +83,12 @@ async def manual_report_background(report_type: str):
                 await send_top_report()
             elif report_type == "shorts":
                 await send_recent_shorts_report()
+            elif report_type == "compare":
+                await send_compare_report()
+            elif report_type == "growth":
+                await send_growth_report()
+            elif report_type == "engagement":
+                await send_engagement_report()
         except Exception:
             logger.exception("Manual %s YouTube report failed", report_type)
             await _send_message("⚠️ ساخت گزارش ناموفق بود. اتصال YouTube و لاگ‌های سرویس را بررسی کن.")
@@ -195,12 +201,15 @@ async def _handle_callback(callback: dict):
         asyncio.create_task(manual_research_background())
         return {"ok": True, "action": "research_run", "started": True}
 
-    if data in ("report_daily", "report_weekly", "report_top", "report_shorts"):
+    if data in ("report_daily", "report_weekly", "report_top", "report_shorts", "report_compare", "report_growth", "report_engagement"):
         report_type = {
             "report_daily": "daily",
             "report_weekly": "weekly",
             "report_top": "top",
             "report_shorts": "shorts",
+            "report_compare": "compare",
+            "report_growth": "growth",
+            "report_engagement": "engagement",
         }[data]
         await answer_callback_query(callback_id, "گزارش در حال آماده‌سازی است")
         asyncio.create_task(manual_report_background(report_type))
@@ -340,9 +349,9 @@ async def telegram_webhook(update_payload: dict, x_telegram_bot_api_secret_token
         elif command == "/selected":
             selected = [t for t in all_topics() if t.status == TopicStatus.SELECTED]
             await send_selected_topics(selected)
-        elif command in ("/daily", "/weekly", "/top", "/shorts"):
+        elif command in ("/daily", "/weekly", "/top", "/shorts", "/compare", "/growth", "/engagement"):
             report_type = command.lstrip("/")
-            labels = {"daily": "روزانه", "weekly": "هفتگی", "top": "۵ ویدیوی برتر", "shorts": "۵ شورت برتر"}
+            labels = {"daily": "روزانه", "weekly": "هفتگی", "top": "۵ ویدیوی برتر", "shorts": "۵ شورت برتر", "compare": "مقایسه دوره‌ای", "growth": "رشد مشترکان", "engagement": "تعامل مخاطبان"}
             await _send_message(f"⏳ گزارش {labels[report_type]} در حال آماده‌سازی است...")
             asyncio.create_task(manual_report_background(report_type))
         elif command == "/status":
