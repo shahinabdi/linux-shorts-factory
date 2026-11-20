@@ -25,6 +25,7 @@ from .config import settings
 from .research import run_daily_research
 from .youtube_routes import router as youtube_router
 from .reports import send_daily_report, send_weekly_report
+from .youtube import channel_info
 
 logging.basicConfig(level=logging.INFO)
 
@@ -36,6 +37,7 @@ app = FastAPI(title="YouTube Channel Intelligence", version="0.5.0")
 app.include_router(youtube_router)
 scheduler = AsyncIOScheduler(timezone=ZoneInfo(settings.schedule_timezone))
 research_lock = asyncio.Lock()
+report_lock = asyncio.Lock()
 
 
 async def execute_research(trigger: str = "manual"):
@@ -64,6 +66,46 @@ async def manual_research_background():
     except Exception:
         logger.exception("Manual research triggered from Telegram failed")
         await _send_message("⚠️ اجرای بررسی موضوعات ناموفق بود. لاگ‌های سرویس را بررسی کن.")
+
+
+async def manual_report_background(report_type: str):
+    if report_lock.locked():
+        await _send_message("⏳ یک گزارش در حال اجراست؛ لطفاً پس از پایان آن دوباره تلاش کن.")
+        return
+    async with report_lock:
+        try:
+            logger.info("Starting manual %s YouTube report from Telegram", report_type)
+            if report_type == "daily":
+                await send_daily_report()
+            else:
+                await send_weekly_report()
+        except Exception:
+            logger.exception("Manual %s YouTube report failed", report_type)
+            await _send_message("⚠️ ساخت گزارش ناموفق بود. اتصال YouTube و لاگ‌های سرویس را بررسی کن.")
+
+
+async def send_telegram_status():
+    try:
+        info = await channel_info()
+        channel_title = (info.get("snippet") or {}).get("title", "YouTube channel")
+        youtube_status = f"✅ متصل ({channel_title})"
+    except Exception as exc:
+        logger.warning("Telegram status check: YouTube unavailable (%s)", type(exc).__name__)
+        youtube_status = "❌ قطع یا غیرقابل‌دسترسی"
+
+    daily_job = scheduler.get_job("youtube-daily-report")
+    weekly_job = scheduler.get_job("youtube-weekly-report")
+    scheduler_status = "✅ فعال" if scheduler.running else "❌ غیرفعال"
+    daily_next = daily_job.next_run_time.strftime("%Y-%m-%d %H:%M %Z") if daily_job else "تنظیم نشده"
+    weekly_next = weekly_job.next_run_time.strftime("%Y-%m-%d %H:%M %Z") if weekly_job else "تنظیم نشده"
+    await _send_message(
+        "🤖 وضعیت Channel Intelligence\\n\\n"
+        f"YouTube: {youtube_status}\\n"
+        f"زمان‌بندی: {scheduler_status}\\n"
+        f"گزارش روزانه بعدی: {daily_next}\\n"
+        f"گزارش هفتگی بعدی: {weekly_next}\\n"
+        f"منطقه زمانی: {settings.schedule_timezone}"
+    )
 
 
 @app.on_event("startup")
@@ -148,6 +190,17 @@ async def _handle_callback(callback: dict):
         await answer_callback_query(callback_id, "بررسی موضوعات شروع شد")
         asyncio.create_task(manual_research_background())
         return {"ok": True, "action": "research_run", "started": True}
+
+    if data in ("report_daily", "report_weekly"):
+        report_type = "daily" if data == "report_daily" else "weekly"
+        await answer_callback_query(callback_id, "گزارش در حال آماده‌سازی است")
+        asyncio.create_task(manual_report_background(report_type))
+        return {"ok": True, "action": data, "started": True}
+
+    if data == "report_status":
+        await answer_callback_query(callback_id, "در حال بررسی وضعیت")
+        await send_telegram_status()
+        return {"ok": True, "action": "report_status"}
 
     if data == "show_selected":
         await answer_callback_query(callback_id, "فهرست موضوعات انتخاب‌شده")
@@ -278,6 +331,12 @@ async def telegram_webhook(update_payload: dict, x_telegram_bot_api_secret_token
         elif command == "/selected":
             selected = [t for t in all_topics() if t.status == TopicStatus.SELECTED]
             await send_selected_topics(selected)
+        elif command in ("/daily", "/weekly"):
+            report_type = "daily" if command == "/daily" else "weekly"
+            await _send_message(f"⏳ گزارش {'روزانه' if report_type == 'daily' else 'هفتگی'} در حال آماده‌سازی است...")
+            asyncio.create_task(manual_report_background(report_type))
+        elif command == "/status":
+            await send_telegram_status()
         return {"ok": True}
 
     return {"ok": True}
