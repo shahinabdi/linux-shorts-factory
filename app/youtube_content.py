@@ -5,6 +5,9 @@ video duration, because duration alone cannot distinguish a Short reliably.
 """
 from datetime import date, timedelta
 import httpx
+import logging
+
+logger = logging.getLogger(__name__)
 
 from .youtube import access_token, channel_info, YOUTUBE_API, ANALYTICS_API
 
@@ -32,7 +35,9 @@ async def _analytics_video_rows(start: date, end: date, content_type: str | None
 
     uploads = await recent_uploads(50)
     video_ids = [item["id"] for item in uploads if item.get("id")]
+    logger.info("YouTube content report: uploads=%d window=%s..%s type=%s", len(video_ids), start, end, content_type or "ALL")
     if not video_ids:
+        logger.warning("YouTube content report: uploads playlist returned no video IDs")
         return []
 
     token = await access_token()
@@ -60,6 +65,7 @@ async def _analytics_video_rows(start: date, end: date, content_type: str | None
 
     headers = [h.get("name") for h in data.get("columnHeaders", [])]
     rows = [dict(zip(headers, row)) for row in data.get("rows", []) or []]
+    logger.info("YouTube content report: Analytics video rows=%d headers=%s", len(rows), headers)
     semaphore = asyncio.Semaphore(5)
 
     async def classify(row):
@@ -76,6 +82,12 @@ async def _analytics_video_rows(start: date, end: date, content_type: str | None
         return row
 
     classified = await asyncio.gather(*(classify(row) for row in rows))
+    type_counts = {}
+    for row in classified:
+        if row:
+            key = row.get("creatorContentType") or "UNKNOWN"
+            type_counts[key] = type_counts.get(key, 0) + 1
+    logger.info("YouTube content report: classified rows=%d types=%s", len([r for r in classified if r]), type_counts)
     if content_type:
         classified = [
             row for row in classified
@@ -103,7 +115,7 @@ async def _video_metadata(video_ids: list[str]) -> dict[str, dict]:
     return result
 
 
-async def top_videos(start: date, end: date, content_type: str = "VIDEO",
+async def top_videos(start: date, end: date, content_type: str = "VIDEO_ON_DEMAND",
                      limit: int = 5) -> list[dict]:
     rows = await _analytics_video_rows(start, end, content_type, limit)
     metadata = await _video_metadata([r["video"] for r in rows if r.get("video")])
