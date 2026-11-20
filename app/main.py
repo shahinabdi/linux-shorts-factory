@@ -195,8 +195,13 @@ async def _handle_callback(callback: dict):
         asyncio.create_task(manual_research_background())
         return {"ok": True, "action": "research_run", "started": True}
 
-    if data in ("report_daily", "report_weekly"):
-        report_type = "daily" if data == "report_daily" else "weekly"
+    if data in ("report_daily", "report_weekly", "report_top", "report_shorts"):
+        report_type = {
+            "report_daily": "daily",
+            "report_weekly": "weekly",
+            "report_top": "top",
+            "report_shorts": "shorts",
+        }[data]
         await answer_callback_query(callback_id, "گزارش در حال آماده‌سازی است")
         asyncio.create_task(manual_report_background(report_type))
         return {"ok": True, "action": data, "started": True}
