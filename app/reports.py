@@ -161,7 +161,8 @@ async def _summary(start: date, end: date, title: str,
         "Retention در صورت پشتیبانی گزارش برای هر ویدیو نمایش داده می‌شود؛ CTR در این نسخه اضافه نشده است.",
     ]
     await _send_message("\n".join(lines))
-    await _send_content_sections(start, end)
+    insight_start = end - timedelta(days=6)
+    await _send_content_sections(insight_start, end)
 
 
 async def send_daily_report():
@@ -178,3 +179,31 @@ async def send_weekly_report():
     prev_end = start - timedelta(days=1)
     prev_start = prev_end - timedelta(days=6)
     await _summary(start, end, "گزارش هفتگی کانال", (prev_start, prev_end))
+
+
+
+async def send_top_report():
+    end = date.today() - timedelta(days=2)
+    start = end - timedelta(days=27)
+    videos = await top_videos(start, end, limit=5)
+    if not videos:
+        return await _send_message("🏆 در ۲۸ روز اخیر ویدیویی با داده آماری پیدا نشد.")
+    lines = [f"🏆 پنج ویدیوی برتر کانال | {start} تا {end}"]
+    lines.extend(_video_line(i, video) for i, video in enumerate(videos, 1))
+    return await _send_message("\\n\\n".join(lines))
+
+
+async def send_recent_shorts_report():
+    shorts = await recent_shorts(5)
+    if not shorts:
+        return await _send_message("🆕 شورت اخیر قابل‌تشخیصی در داده‌های Analytics پیدا نشد.")
+    lines = ["🆕 پنج شورت اخیر منتشرشده"]
+    for i, video in enumerate(shorts, 1):
+        avg = video.get("averageViewPercentage")
+        retention = f" | میانگین درصد تماشا: {float(avg):.1f}%" if avg not in (None, "") else ""
+        lines.append(
+            f"{i}. {video['title'][:75]}\\n"
+            f"   📅 {_date_label(video.get('published_at', ''))} | 👁 {_num(video.get('views'))}{retention}\\n"
+            f"   {video['url']}"
+        )
+    return await _send_message("\\n\\n".join(lines))
