@@ -111,6 +111,8 @@ async def recent_shorts(limit: int = 5) -> list[dict]:
             continue
         published = (item.get("snippet") or {}).get("publishedAt", "")[:10]
         start = date.fromisoformat(published) if published else end - timedelta(days=89)
+        if start > end:
+            continue
         rows = await _analytics_video_rows_for_id(start, end, video_id, "SHORTS")
         if rows:
             row = rows[0]
@@ -161,6 +163,8 @@ async def latest_long_video() -> dict | None:
             continue
         published = (item.get("snippet") or {}).get("publishedAt", "")[:10]
         start = date.fromisoformat(published) if published else end - timedelta(days=89)
+        if start > end:
+            continue
         rows = await _analytics_video_rows_for_id(start, end, video_id, "VIDEO")
         if rows:
             snippet = item.get("snippet", {})
