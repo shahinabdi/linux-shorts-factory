@@ -40,13 +40,22 @@ async def answer_callback_query(callback_query_id: str, text: str = "انجام 
 
 async def send_control_panel():
     keyboard = {"inline_keyboard": [
+        [{"text": "📊 گزارش روزانه", "callback_data": "report_daily"},
+         {"text": "📈 گزارش هفتگی", "callback_data": "report_weekly"}],
+        [{"text": "🔌 وضعیت سرویس", "callback_data": "report_status"}],
         [{"text": "🔎 کشف موضوعات جدید", "callback_data": "research_run"}],
         [{"text": "📚 موضوعات انتخاب‌شده", "callback_data": "show_selected"}],
     ]}
     return await _send_message(
         "🎬 پنل Linux Shorts Factory\n\n"
         "از اینجا می‌توانی موضوعات جدید را دستی دریافت کنی یا فهرست انتخاب‌شده‌ها را مدیریت کنی.\n\n"
-        "دستورها: /run برای اجرای تحقیق، /selected برای دیدن موضوعات انتخاب‌شده، /menu برای نمایش این پنل.",
+        "دستورها:\\n"
+        "/daily — دریافت گزارش روزانه\\n"
+        "/weekly — دریافت گزارش هفتگی\\n"
+        "/status — بررسی اتصال YouTube و زمان‌بندی\\n"
+        "/run — اجرای تحقیق موضوعات\\n"
+        "/selected — موضوعات انتخاب‌شده\\n"
+        "/menu یا /help — نمایش این پنل.",
         keyboard
     )
 
