@@ -313,14 +313,14 @@ async def telegram_webhook(update_payload: dict, x_telegram_bot_api_secret_token
     if callback:
         # Only accept actions from the configured private Telegram chat.
         chat_id = str((callback.get("message") or {}).get("chat", {}).get("id", ""))
-        if settings.telegram_chat_id and chat_id != str(settings.telegram_chat_id):
+        if not settings.telegram_chat_id or chat_id != str(settings.telegram_chat_id):
             raise HTTPException(status_code=403, detail="Unauthorized Telegram chat")
         return await _handle_callback(callback)
 
     message = update_payload.get("message") or update_payload.get("edited_message")
     if message:
         chat_id = str(message.get("chat", {}).get("id", ""))
-        if settings.telegram_chat_id and chat_id != str(settings.telegram_chat_id):
+        if not settings.telegram_chat_id or chat_id != str(settings.telegram_chat_id):
             return {"ok": True}
         command = (message.get("text") or "").split()[0].split("@")[0].lower() if message.get("text") else ""
         if command in ("/start", "/menu", "/help"):
