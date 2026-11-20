@@ -23,6 +23,7 @@ from .telegram import (
 )
 from .config import settings
 from .research import run_daily_research
+from .youtube_routes import router as youtube_router
 
 logging.basicConfig(level=logging.INFO)
 
@@ -30,7 +31,8 @@ logging.basicConfig(level=logging.INFO)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("httpcore").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
-app = FastAPI(title="Linux Shorts Factory", version="0.4.0")
+app = FastAPI(title="YouTube Channel Intelligence", version="0.5.0")
+app.include_router(youtube_router)
 scheduler = AsyncIOScheduler(timezone=ZoneInfo(settings.schedule_timezone))
 research_lock = asyncio.Lock()
 
