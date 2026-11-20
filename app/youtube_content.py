@@ -9,6 +9,10 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# YouTube Analytics creatorContentType enum values are case-sensitive.
+CONTENT_TYPE_SHORTS = "shorts"
+CONTENT_TYPE_LONG_FORM = "videoOnDemand"
+
 from .youtube import access_token, channel_info, YOUTUBE_API, ANALYTICS_API
 
 
@@ -115,7 +119,7 @@ async def _video_metadata(video_ids: list[str]) -> dict[str, dict]:
     return result
 
 
-async def top_videos(start: date, end: date, content_type: str = "VIDEO_ON_DEMAND",
+async def top_videos(start: date, end: date, content_type: str = CONTENT_TYPE_LONG_FORM,
                      limit: int = 5) -> list[dict]:
     rows = await _analytics_video_rows(start, end, content_type, limit)
     metadata = await _video_metadata([r["video"] for r in rows if r.get("video")])
@@ -161,7 +165,7 @@ async def recent_shorts(limit: int = 5) -> list[dict]:
     """
     end = date.today() - timedelta(days=2)
     start = end - timedelta(days=27)
-    return await top_videos(start, end, content_type="SHORTS", limit=limit)
+    return await top_videos(start, end, content_type=CONTENT_TYPE_SHORTS, limit=limit)
 
 
 async def _analytics_video_rows_for_id(start: date, end: date, video_id: str,
@@ -200,7 +204,7 @@ async def latest_long_video() -> dict | None:
         if start > end:
             continue
         rows = await _analytics_video_rows_for_id(start, end, video_id, "VIDEO_ON_DEMAND")
-        rows = [row for row in rows if row.get("creatorContentType") == "VIDEO_ON_DEMAND"]
+        rows = [row for row in rows if row.get("creatorContentType") == CONTENT_TYPE_LONG_FORM]
         if rows:
             snippet = item.get("snippet", {})
             return {
