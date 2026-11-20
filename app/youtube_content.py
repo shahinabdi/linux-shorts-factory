@@ -188,6 +188,7 @@ async def latest_long_video() -> dict | None:
         if start > end:
             continue
         rows = await _analytics_video_rows_for_id(start, end, video_id, "VIDEO_ON_DEMAND")
+        rows = [row for row in rows if row.get("creatorContentType") == "VIDEO_ON_DEMAND"]
         if rows:
             snippet = item.get("snippet", {})
             return {
