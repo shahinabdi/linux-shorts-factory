@@ -150,7 +150,7 @@ async def channel_info() -> dict:
     async with httpx.AsyncClient(timeout=30) as client:
         response = await client.get(
             f"{YOUTUBE_API}/channels",
-            params={"part": "snippet,statistics", "mine": "true"},
+            params={"part": "snippet,statistics,contentDetails", "mine": "true"},
             headers={"Authorization": f"Bearer {token}"},
         )
         response.raise_for_status()
