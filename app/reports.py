@@ -207,3 +207,83 @@ async def send_recent_shorts_report():
             f"   {video['url']}"
         )
     return await _send_message("\n\n".join(lines))
+
+
+async def send_compare_report():
+    """Compare the latest 7 complete Analytics days with the previous 7."""
+    end = date.today() - timedelta(days=2)
+    start = end - timedelta(days=6)
+    previous_end = start - timedelta(days=1)
+    previous_start = previous_end - timedelta(days=6)
+    metrics = "views,estimatedMinutesWatched,subscribersGained,subscribersLost,likes,comments"
+    current = _sum_rows(await analytics_report(
+        start.isoformat(), end.isoformat(), dimensions="day", metrics=metrics, sort="day"
+    ))
+    previous = _sum_rows(await analytics_report(
+        previous_start.isoformat(), previous_end.isoformat(),
+        dimensions="day", metrics=metrics, sort="day"
+    ))
+    labels = [
+        ("بازدید", "views"), ("زمان تماشا (دقیقه)", "estimatedMinutesWatched"),
+        ("مشترک جدید", "subscribersGained"), ("لایک", "likes"), ("کامنت", "comments"),
+    ]
+    lines = ["⚖️ مقایسه عملکرد کانال", f"دوره جدید: {start} تا {end}",
+             f"دوره قبل: {previous_start} تا {previous_end}", ""]
+    for label, key in labels:
+        new = float(current.get(key, 0) or 0)
+        old = float(previous.get(key, 0) or 0)
+        change = f"{(new-old)/old*100:+.1f}%" if old else ("—" if not new else "دوره قبل صفر")
+        lines.append(f"{label}: {_num(new)} در برابر {_num(old)} ({change})")
+    new_net = current.get("subscribersGained", 0) - current.get("subscribersLost", 0)
+    old_net = previous.get("subscribersGained", 0) - previous.get("subscribersLost", 0)
+    lines += ["", f"📈 رشد خالص مشترک: {new_net:+,.0f} در برابر {old_net:+,.0f}"]
+    return await _send_message("\n".join(lines))
+
+
+async def send_growth_report():
+    """Show daily subscriber gains/losses and net growth for 14 complete days."""
+    end = date.today() - timedelta(days=2)
+    start = end - timedelta(days=13)
+    report = await analytics_report(
+        start.isoformat(), end.isoformat(), dimensions="day",
+        metrics="subscribersGained,subscribersLost,views", sort="day", max_results=20,
+    )
+    headers = [h.get("name") for h in report.get("columnHeaders", [])]
+    rows = [dict(zip(headers, row)) for row in report.get("rows", []) or []]
+    if not rows:
+        return await _send_message("📈 برای بازه رشد مشترکان داده‌ای از YouTube Analytics دریافت نشد.")
+    gained = sum(float(row.get("subscribersGained") or 0) for row in rows)
+    lost = sum(float(row.get("subscribersLost") or 0) for row in rows)
+    views = sum(float(row.get("views") or 0) for row in rows)
+    lines = ["📈 گزارش رشد کانال — ۱۴ روز کامل", f"بازه: {start} تا {end}",
+             f"مشترک جدید: {_num(gained)}", f"لغو اشتراک: {_num(lost)}",
+             f"رشد خالص: {gained-lost:+,.0f}", f"بازدید: {_num(views)}", "",
+             "روند روزانه (➕ جدید / ➖ لغو):"]
+    for row in rows[-14:]:
+        lines.append(f"{str(row.get('day', ''))}: +{_num(row.get('subscribersGained'))} / -{_num(row.get('subscribersLost'))}")
+    return await _send_message("\n".join(lines))
+
+
+async def send_engagement_report():
+    """Summarize likes, comments and interaction rate over 28 complete days."""
+    end = date.today() - timedelta(days=2)
+    start = end - timedelta(days=27)
+    report = await analytics_report(
+        start.isoformat(), end.isoformat(), dimensions="day",
+        metrics="views,likes,comments,estimatedMinutesWatched", sort="day", max_results=35,
+    )
+    totals = _sum_rows(report)
+    views = float(totals.get("views", 0) or 0)
+    likes = float(totals.get("likes", 0) or 0)
+    comments = float(totals.get("comments", 0) or 0)
+    interactions = likes + comments
+    rate = interactions / views * 100 if views else 0
+    return await _send_message(
+        "💬 گزارش تعامل مخاطبان — ۲۸ روز کامل\n"
+        f"بازه: {start} تا {end}\n\n"
+        f"👁 بازدید: {_num(views)}\n👍 لایک: {_num(likes)}\n"
+        f"💬 کامنت: {_num(comments)}\n🤝 مجموع تعامل ثبت‌شده: {_num(interactions)}\n"
+        f"📊 نرخ تعامل ساده (لایک + کامنت ÷ بازدید): {rate:.2f}%\n"
+        f"⏱ زمان تماشا: {_minutes(totals.get('estimatedMinutesWatched'))}\n\n"
+        "این نرخ، شاخص ساده تعامل است و با نرخ تعامل رسمی YouTube یکسان نیست."
+    )
