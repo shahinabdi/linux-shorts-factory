@@ -190,7 +190,7 @@ async def send_top_report():
         return await _send_message("🏆 در ۲۸ روز اخیر ویدیویی با داده آماری پیدا نشد.")
     lines = [f"🏆 پنج ویدیوی برتر کانال | {start} تا {end}"]
     lines.extend(_video_line(i, video) for i, video in enumerate(videos, 1))
-    return await _send_message("\\n\\n".join(lines))
+    return await _send_message("\n\n".join(lines))
 
 
 async def send_recent_shorts_report():
@@ -202,8 +202,8 @@ async def send_recent_shorts_report():
         avg = video.get("averageViewPercentage")
         retention = f" | میانگین درصد تماشا: {float(avg):.1f}%" if avg not in (None, "") else ""
         lines.append(
-            f"{i}. {video['title'][:75]}\\n"
-            f"   📅 {_date_label(video.get('published_at', ''))} | 👁 {_num(video.get('views'))}{retention}\\n"
+            f"{i}. {video['title'][:75]}\n"
+            f"   📅 {_date_label(video.get('published_at', ''))} | 👁 {_num(video.get('views'))}{retention}\n"
             f"   {video['url']}"
         )
-    return await _send_message("\\n\\n".join(lines))
+    return await _send_message("\n\n".join(lines))
