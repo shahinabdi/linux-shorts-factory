@@ -23,6 +23,8 @@ from .telegram import (
 )
 from .config import settings
 from .research import run_daily_research
+from .youtube_routes import router as youtube_router
+from .reports import send_daily_report, send_weekly_report
 
 logging.basicConfig(level=logging.INFO)
 
@@ -30,7 +32,8 @@ logging.basicConfig(level=logging.INFO)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("httpcore").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
-app = FastAPI(title="Linux Shorts Factory", version="0.4.0")
+app = FastAPI(title="YouTube Channel Intelligence", version="0.5.0")
+app.include_router(youtube_router)
 scheduler = AsyncIOScheduler(timezone=ZoneInfo(settings.schedule_timezone))
 research_lock = asyncio.Lock()
 
@@ -65,6 +68,24 @@ async def manual_research_background():
 
 @app.on_event("startup")
 async def startup_event():
+    if settings.youtube_reports_enabled:
+        scheduler.add_job(
+            send_daily_report,
+            CronTrigger(hour=settings.youtube_daily_report_hour, minute=0,
+                        timezone=ZoneInfo(settings.schedule_timezone)),
+            id="youtube-daily-report", replace_existing=True, coalesce=True, max_instances=1,
+        )
+        scheduler.add_job(
+            send_weekly_report,
+            CronTrigger(day_of_week=settings.youtube_weekly_report_day, hour=9, minute=0,
+                        timezone=ZoneInfo(settings.schedule_timezone)),
+            id="youtube-weekly-report", replace_existing=True, coalesce=True, max_instances=1,
+        )
+        if not scheduler.running:
+            if not scheduler.running:
+            scheduler.start()
+        logger.info("YouTube reports scheduled in %s", settings.schedule_timezone)
+
     if settings.research_schedule_enabled:
         trigger = CronTrigger(
             hour=settings.research_schedule_hour,
@@ -91,7 +112,7 @@ async def shutdown_event():
 
 @app.get("/health")
 def health():
-    return {"ok": True, "service": "linux-shorts-factory", "version": "0.4.0",
+    return {"ok": True, "service": "youtube-channel-intelligence", "version": "0.5.0",
             "region": settings.aws_region, "llm_api_required": False,
             "research_schedule_enabled": settings.research_schedule_enabled,
             "research_schedule": f"{settings.research_schedule_hour:02d}:{settings.research_schedule_minute:02d} {settings.schedule_timezone}"}
