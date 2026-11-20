@@ -22,29 +22,69 @@ async def _youtube_get(path: str, params: dict) -> dict:
 
 async def _analytics_video_rows(start: date, end: date, content_type: str | None = None,
                                 max_results: int = 5) -> list[dict]:
-    """Fetch per-video rows and classify locally using creatorContentType dimension."""
+    """Fetch per-video metrics, then classify each video with the supported
+    playback-details report (creatorContentType + video filter).
+
+    The Analytics API does not support combining video and creatorContentType
+    as dimensions in the basic video report.
+    """
+    import asyncio
+
+    uploads = await recent_uploads(50)
+    video_ids = [item["id"] for item in uploads if item.get("id")]
+    if not video_ids:
+        return []
+
     token = await access_token()
     params = {
         "ids": "channel==MINE",
         "startDate": start.isoformat(),
         "endDate": end.isoformat(),
-        "dimensions": "video,creatorContentType",
+        "dimensions": "video",
         "metrics": "views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,likes,comments,subscribersGained",
+        "filters": "video==" + ",".join(video_ids),
         "sort": "-views",
-        "maxResults": 200,
+        "maxResults": min(len(video_ids), 200),
     }
     async with httpx.AsyncClient(timeout=45) as client:
         response = await client.get(
             ANALYTICS_API, params=params,
             headers={"Authorization": f"Bearer {token}"},
         )
-        response.raise_for_status()
+        if response.is_error:
+            raise RuntimeError(
+                f"YouTube Analytics video report failed ({response.status_code}): "
+                f"{response.text[:1000]}"
+            )
         data = response.json()
+
     headers = [h.get("name") for h in data.get("columnHeaders", [])]
     rows = [dict(zip(headers, row)) for row in data.get("rows", []) or []]
+    semaphore = asyncio.Semaphore(5)
+
+    async def classify(row):
+        video_id = row.get("video")
+        if not video_id:
+            return None
+        async with semaphore:
+            type_rows = await _analytics_video_rows_for_id(
+                start, end, video_id, content_type or ""
+            )
+        if not type_rows:
+            return None
+        row["creatorContentType"] = type_rows[0].get("creatorContentType")
+        return row
+
+    classified = await asyncio.gather(*(classify(row) for row in rows))
     if content_type:
-        rows = [row for row in rows if row.get("creatorContentType") == content_type]
-    return rows[:max_results]
+        classified = [
+            row for row in classified
+            if row and row.get("creatorContentType") == content_type
+        ]
+    else:
+        classified = [row for row in classified if row]
+    classified.sort(key=lambda row: float(row.get("views") or 0), reverse=True)
+    return classified[:max_results]
 
 
 async def _video_metadata(video_ids: list[str]) -> dict[str, dict]:
@@ -148,6 +188,7 @@ async def latest_long_video() -> dict | None:
         if start > end:
             continue
         rows = await _analytics_video_rows_for_id(start, end, video_id, "VIDEO_ON_DEMAND")
+        rows = [row for row in rows if row.get("creatorContentType") == "VIDEO_ON_DEMAND"]
         if rows:
             snippet = item.get("snippet", {})
             return {
