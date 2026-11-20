@@ -81,9 +81,6 @@ async def startup_event():
                         timezone=ZoneInfo(settings.schedule_timezone)),
             id="youtube-weekly-report", replace_existing=True, coalesce=True, max_instances=1,
         )
-        if not scheduler.running:
-            if not scheduler.running:
-            scheduler.start()
         logger.info("YouTube reports scheduled in %s", settings.schedule_timezone)
 
     if settings.research_schedule_enabled:
@@ -96,12 +93,14 @@ async def startup_event():
             scheduled_research, trigger=trigger, id="daily-topic-discovery",
             replace_existing=True, coalesce=True, max_instances=1,
         )
-        scheduler.start()
         logger.info(
             "Daily research scheduled at %02d:%02d (%s)",
             settings.research_schedule_hour, settings.research_schedule_minute,
             settings.schedule_timezone,
         )
+
+    if settings.youtube_reports_enabled or settings.research_schedule_enabled:
+        scheduler.start()
 
 
 @app.on_event("shutdown")
