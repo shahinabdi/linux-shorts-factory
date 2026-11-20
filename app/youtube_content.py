@@ -102,14 +102,15 @@ async def recent_uploads(limit: int = 30) -> list[dict]:
 async def recent_shorts(limit: int = 5) -> list[dict]:
     # Inspect recent uploads and verify each candidate against Analytics'
     # creatorContentType filter; duration is deliberately not used as proof.
-    uploads = await recent_uploads(40)
+    uploads = await recent_uploads(20)
     selected = []
     end = date.today() - timedelta(days=2)
-    start = end - timedelta(days=27)
     for item in uploads:
         video_id = item.get("id")
         if not video_id:
             continue
+        published = (item.get("snippet") or {}).get("publishedAt", "")[:10]
+        start = date.fromisoformat(published) if published else end - timedelta(days=89)
         rows = await _analytics_video_rows_for_id(start, end, video_id, "SHORTS")
         if rows:
             row = rows[0]
@@ -158,6 +159,8 @@ async def latest_long_video() -> dict | None:
         video_id = item.get("id")
         if not video_id:
             continue
+        published = (item.get("snippet") or {}).get("publishedAt", "")[:10]
+        start = date.fromisoformat(published) if published else end - timedelta(days=89)
         rows = await _analytics_video_rows_for_id(start, end, video_id, "VIDEO")
         if rows:
             snippet = item.get("snippet", {})
