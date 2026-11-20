@@ -99,11 +99,11 @@ async def send_telegram_status():
     daily_next = daily_job.next_run_time.strftime("%Y-%m-%d %H:%M %Z") if daily_job else "تنظیم نشده"
     weekly_next = weekly_job.next_run_time.strftime("%Y-%m-%d %H:%M %Z") if weekly_job else "تنظیم نشده"
     await _send_message(
-        "🤖 وضعیت Channel Intelligence\\n\\n"
-        f"YouTube: {youtube_status}\\n"
-        f"زمان‌بندی: {scheduler_status}\\n"
-        f"گزارش روزانه بعدی: {daily_next}\\n"
-        f"گزارش هفتگی بعدی: {weekly_next}\\n"
+        "🤖 وضعیت Channel Intelligence\n\n"
+        f"YouTube: {youtube_status}\n"
+        f"زمان‌بندی: {scheduler_status}\n"
+        f"گزارش روزانه بعدی: {daily_next}\n"
+        f"گزارش هفتگی بعدی: {weekly_next}\n"
         f"منطقه زمانی: {settings.schedule_timezone}"
     )
 
