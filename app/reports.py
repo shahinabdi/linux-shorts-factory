@@ -77,7 +77,7 @@ async def _send_content_sections(start: date, end: date):
     try:
         shorts = await recent_shorts(5)
         if shorts:
-            lines = ["🆕 ۵ شورت اخیر منتشرشده"]
+            lines = ["🔥 ۵ شورت برتر ۲۸ روز اخیر"]
             for i, video in enumerate(shorts, 1):
                 lines.append(
                     f"{i}. {video['title'][:75]}\n"
@@ -197,7 +197,7 @@ async def send_recent_shorts_report():
     shorts = await recent_shorts(5)
     if not shorts:
         return await _send_message("🆕 شورت اخیر قابل‌تشخیصی در داده‌های Analytics پیدا نشد.")
-    lines = ["🆕 پنج شورت اخیر منتشرشده"]
+    lines = ["🔥 پنج شورت برتر ۲۸ روز اخیر"]
     for i, video in enumerate(shorts, 1):
         avg = video.get("averageViewPercentage")
         retention = f" | میانگین درصد تماشا: {float(avg):.1f}%" if avg not in (None, "") else ""

@@ -43,7 +43,7 @@ async def send_control_panel():
         [{"text": "📊 گزارش روزانه", "callback_data": "report_daily"},
          {"text": "📈 گزارش هفتگی", "callback_data": "report_weekly"}],
         [{"text": "🏆 ۵ ویدیوی برتر", "callback_data": "report_top"},
-         {"text": "🆕 ۵ شورت اخیر", "callback_data": "report_shorts"}],
+         {"text": "🔥 ۵ شورت برتر", "callback_data": "report_shorts"}],
         [{"text": "🔌 وضعیت سرویس", "callback_data": "report_status"}],
         [{"text": "🔎 کشف موضوعات جدید", "callback_data": "research_run"}],
         [{"text": "📚 موضوعات انتخاب‌شده", "callback_data": "show_selected"}],
@@ -55,7 +55,7 @@ async def send_control_panel():
         "/daily — دریافت گزارش روزانه\n"
         "/weekly — دریافت گزارش هفتگی\n"
         "/top — پنج ویدیوی برتر ۲۸ روز اخیر\n"
-        "/shorts — پنج شورت اخیر\n"
+        "/shorts — پنج شورت برتر ۲۸ روز اخیر\n"
         "/status — بررسی اتصال YouTube و زمان‌بندی\n"
         "/run — اجرای تحقیق موضوعات\n"
         "/selected — موضوعات انتخاب‌شده\n"

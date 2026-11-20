@@ -63,7 +63,7 @@ async def _video_metadata(video_ids: list[str]) -> dict[str, dict]:
     return result
 
 
-async def top_videos(start: date, end: date, content_type: str | None = "VIDEO_ON_DEMAND",
+async def top_videos(start: date, end: date, content_type: str = "VIDEO",
                      limit: int = 5) -> list[dict]:
     rows = await _analytics_video_rows(start, end, content_type, limit)
     metadata = await _video_metadata([r["video"] for r in rows if r.get("video")])
@@ -102,7 +102,11 @@ async def recent_uploads(limit: int = 30) -> list[dict]:
 
 
 async def recent_shorts(limit: int = 5) -> list[dict]:
-    """Return the best-performing Shorts in the latest 28 complete days."""
+    """Return the best-performing Shorts in the latest 28 complete days.
+
+    A single Analytics query classifies content by creatorContentType, avoiding
+    one API request per uploaded video and avoiding duration-based guesses.
+    """
     end = date.today() - timedelta(days=2)
     start = end - timedelta(days=27)
     return await top_videos(start, end, content_type="SHORTS", limit=limit)

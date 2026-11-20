@@ -342,7 +342,7 @@ async def telegram_webhook(update_payload: dict, x_telegram_bot_api_secret_token
             await send_selected_topics(selected)
         elif command in ("/daily", "/weekly", "/top", "/shorts"):
             report_type = command.lstrip("/")
-            labels = {"daily": "روزانه", "weekly": "هفتگی", "top": "۵ ویدیوی برتر", "shorts": "۵ شورت اخیر"}
+            labels = {"daily": "روزانه", "weekly": "هفتگی", "top": "۵ ویدیوی برتر", "shorts": "۵ شورت برتر"}
             await _send_message(f"⏳ گزارش {labels[report_type]} در حال آماده‌سازی است...")
             asyncio.create_task(manual_report_background(report_type))
         elif command == "/status":
