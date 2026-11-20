@@ -44,6 +44,9 @@ async def send_control_panel():
          {"text": "📈 گزارش هفتگی", "callback_data": "report_weekly"}],
         [{"text": "🏆 ۵ ویدیوی برتر", "callback_data": "report_top"},
          {"text": "🔥 ۵ شورت برتر", "callback_data": "report_shorts"}],
+        [{"text": "⚖️ مقایسه ۷ روزه", "callback_data": "report_compare"},
+         {"text": "📈 رشد مشترکان", "callback_data": "report_growth"}],
+        [{"text": "💬 تعامل مخاطبان", "callback_data": "report_engagement"}],
         [{"text": "🔌 وضعیت سرویس", "callback_data": "report_status"}],
         [{"text": "🔎 کشف موضوعات جدید", "callback_data": "research_run"}],
         [{"text": "📚 موضوعات انتخاب‌شده", "callback_data": "show_selected"}],
@@ -55,7 +58,10 @@ async def send_control_panel():
         "/daily — دریافت گزارش روزانه\n"
         "/weekly — دریافت گزارش هفتگی\n"
         "/top — پنج ویدیوی برتر ۲۸ روز اخیر\n"
-        "/shorts — پنج شورت برتر ۲۸ روز اخیر\n"\n        "/compare — مقایسه ۷ روز اخیر با ۷ روز قبل\n"\n        "/growth — روند رشد مشترکان در ۱۴ روز\n"\n        "/engagement — لایک، کامنت و نرخ تعامل ۲۸ روز\n"
+        "/shorts — پنج شورت برتر ۲۸ روز اخیر\n"
+        "/compare — مقایسه ۷ روز اخیر با ۷ روز قبل\n"
+        "/growth — روند رشد مشترکان در ۱۴ روز\n"
+        "/engagement — لایک، کامنت و نرخ تعامل ۲۸ روز\n"
         "/status — بررسی اتصال YouTube و زمان‌بندی\n"
         "/run — اجرای تحقیق موضوعات\n"
         "/selected — موضوعات انتخاب‌شده\n"
