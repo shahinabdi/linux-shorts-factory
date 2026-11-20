@@ -82,6 +82,7 @@ async def startup_event():
             id="youtube-weekly-report", replace_existing=True, coalesce=True, max_instances=1,
         )
         if not scheduler.running:
+            if not scheduler.running:
             scheduler.start()
         logger.info("YouTube reports scheduled in %s", settings.schedule_timezone)
 
@@ -111,7 +112,7 @@ async def shutdown_event():
 
 @app.get("/health")
 def health():
-    return {"ok": True, "service": "linux-shorts-factory", "version": "0.4.0",
+    return {"ok": True, "service": "youtube-channel-intelligence", "version": "0.5.0",
             "region": settings.aws_region, "llm_api_required": False,
             "research_schedule_enabled": settings.research_schedule_enabled,
             "research_schedule": f"{settings.research_schedule_hour:02d}:{settings.research_schedule_minute:02d} {settings.schedule_timezone}"}
