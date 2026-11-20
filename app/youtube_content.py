@@ -22,18 +22,17 @@ async def _youtube_get(path: str, params: dict) -> dict:
 
 async def _analytics_video_rows(start: date, end: date, content_type: str | None = None,
                                 max_results: int = 5) -> list[dict]:
+    """Fetch per-video rows and classify locally using creatorContentType dimension."""
     token = await access_token()
     params = {
         "ids": "channel==MINE",
         "startDate": start.isoformat(),
         "endDate": end.isoformat(),
-        "dimensions": "video",
+        "dimensions": "video,creatorContentType",
         "metrics": "views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,likes,comments,subscribersGained",
         "sort": "-views",
-        "maxResults": max_results,
+        "maxResults": 200,
     }
-    if content_type:
-        params["filters"] = f"creatorContentType=={content_type}"
     async with httpx.AsyncClient(timeout=45) as client:
         response = await client.get(
             ANALYTICS_API, params=params,
@@ -42,7 +41,10 @@ async def _analytics_video_rows(start: date, end: date, content_type: str | None
         response.raise_for_status()
         data = response.json()
     headers = [h.get("name") for h in data.get("columnHeaders", [])]
-    return [dict(zip(headers, row)) for row in data.get("rows", []) or []]
+    rows = [dict(zip(headers, row)) for row in data.get("rows", []) or []]
+    if content_type:
+        rows = [row for row in rows if row.get("creatorContentType") == content_type]
+    return rows[:max_results]
 
 
 async def _video_metadata(video_ids: list[str]) -> dict[str, dict]:
@@ -61,7 +63,7 @@ async def _video_metadata(video_ids: list[str]) -> dict[str, dict]:
     return result
 
 
-async def top_videos(start: date, end: date, content_type: str | None = None,
+async def top_videos(start: date, end: date, content_type: str | None = "VIDEO_ON_DEMAND",
                      limit: int = 5) -> list[dict]:
     rows = await _analytics_video_rows(start, end, content_type, limit)
     metadata = await _video_metadata([r["video"] for r in rows if r.get("video")])
@@ -137,10 +139,10 @@ async def _analytics_video_rows_for_id(start: date, end: date, video_id: str,
         "ids": "channel==MINE",
         "startDate": start.isoformat(),
         "endDate": end.isoformat(),
-        "dimensions": "video",
+        "dimensions": "creatorContentType",
         "metrics": "views,averageViewPercentage",
-        "filters": f"video=={video_id};creatorContentType=={content_type}",
-        "maxResults": 1,
+        "filters": f"video=={video_id}",
+        "maxResults": 10,
     }
     async with httpx.AsyncClient(timeout=30) as client:
         response = await client.get(
@@ -165,7 +167,7 @@ async def latest_long_video() -> dict | None:
         start = date.fromisoformat(published) if published else end - timedelta(days=89)
         if start > end:
             continue
-        rows = await _analytics_video_rows_for_id(start, end, video_id, "VIDEO")
+        rows = await _analytics_video_rows_for_id(start, end, video_id, "VIDEO_ON_DEMAND")
         if rows:
             snippet = item.get("snippet", {})
             return {
