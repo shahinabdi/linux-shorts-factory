@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     aws_region: str = "eu-west-3"
     public_base_url: str = "http://localhost:8000"
     daily_shorts_target: int = 4
-    research_schedule_enabled: bool = True
+    research_schedule_enabled: bool = False
     research_schedule_hour: int = 9
     research_schedule_minute: int = 0
     schedule_timezone: str = "Europe/Paris"
