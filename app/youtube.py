@@ -62,6 +62,8 @@ def save_refresh_token(token_payload: dict) -> None:
         # Google may omit a refresh token on subsequent consent grants.
         existing = load_token_secret()
         refresh_token = existing.get("refresh_token")
+        if refresh_token == "PENDING":
+            refresh_token = None
     if not refresh_token:
         raise RuntimeError("Google did not return a refresh token; revoke app access and authorize again")
     payload = {
